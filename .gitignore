@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env*
+!.env.example
+.DS_Store
+npm-debug.log*
+
+# Original supplied briefs and reference material stay local.
+references/supplied/
+CHECKSUMS.sha256
