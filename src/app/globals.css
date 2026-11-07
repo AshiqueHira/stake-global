@@ -478,6 +478,14 @@ h3 {
   font-weight: 400;
   letter-spacing: -1px;
 }
+.platform-logo {
+  display: block;
+  height: 34px;
+  width: auto;
+}
+.platform-logo-lg {
+  height: 70px;
+}
 .platform-item span {
   font-size: 10px;
   color: #bbb;

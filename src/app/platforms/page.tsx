@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata(
   "MetaTrader & MT5 Trading Platforms | Stake Global",
-  "Discover MetaTrader and MetaFix 5, available through Stake Global. Speak with our team about platform access and account requirements.",
+  "Discover MetaTrader and MetaFix, available through Stake Global. Speak with our team about platform access and account requirements.",
   "/platforms/",
 );
 
@@ -20,7 +20,7 @@ export default function Page() {
           <span className="muted">Your trading environment.</span>
         </h1>
         <p className="intro">
-          MetaTrader and MetaFix 5 are available through Stake Global. Our team
+          MetaTrader and MetaFix are available through Stake Global. Our team
           can guide you on platform access and the requirements for your
           account.
         </p>
@@ -62,7 +62,15 @@ export default function Page() {
         </article>
         <article className="platform-page-card">
           <div className="eyebrow">Available through Stake Global</div>
-          <h2>MetaFix 5</h2>
+          <h2>
+            <img
+              className="platform-logo platform-logo-lg"
+              src={assetPath("/assets/metafix-logo.png")}
+              width="1263"
+              height="343"
+              alt="MetaFix"
+            />
+          </h2>
           <p>
             An established platform for charting, technical analysis, and
             automated trading, with features determined by the supported
@@ -73,7 +81,7 @@ export default function Page() {
             <li>Automated trading capabilities</li>
             <li>Configuration-specific market access</li>
           </ul>
-          <TextLink href="/contact/?inquiry=platform">Ask about MT5</TextLink>
+          <TextLink href="/contact/?inquiry=platform">Ask about MetaFix</TextLink>
         </article>
       </section>
       <div className="wrap section content-divider">

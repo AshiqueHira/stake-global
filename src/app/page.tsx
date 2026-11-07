@@ -151,15 +151,19 @@ export default function Page() {
               Fresh perspective.
             </h2>
             <p className="intro">
-              Explore MetaTrader and MetaFix 5, available through Stake Global.
+              Explore MetaTrader and MetaFix, available through Stake Global.
             </p>
             <div className="platform-list">
               <div className="platform-item">
-                <strong>MetaTrader</strong>
-                <span>Available</span>
-              </div>
-              <div className="platform-item">
-                <strong>MetaFix 5</strong>
+                <strong>
+                  <img
+                    className="platform-logo"
+                    src={assetPath("/assets/metafix-logo.png")}
+                    width="1263"
+                    height="343"
+                    alt="MetaFix"
+                  />
+                </strong>
                 <span>Available</span>
               </div>
             </div>
@@ -268,7 +272,7 @@ export default function Page() {
         </div>
         <div>
           <FAQItem question="Which trading platforms are available?">
-            MetaTrader and MetaFix 5 are available through Stake Global. Contact
+            MetaTrader and MetaFix are available through Stake Global. Contact
             our team for information about access and your account requirements.
           </FAQItem>
           <FAQItem question="How do I open an account?">
