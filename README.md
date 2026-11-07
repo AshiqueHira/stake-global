@@ -34,7 +34,7 @@ For a reproducible dependency install, use `npm ci` instead of `npm install`. Ex
 | ----------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `src/app/page.tsx`                        | Homepage                                                                                           |
 | `src/app/markets/page.tsx`                | Forex, Metals, and Indices                                                                         |
-| `src/app/platforms/page.tsx`              | MetaTrader and MetaFix                                                                           |
+| `src/app/platforms/page.tsx`              | MetaFix                                                                                          |
 | `src/app/about/page.tsx`                  | About and Why Stake Global                                                                         |
 | `src/app/contact/page.tsx`                | Contact route and inquiry selection                                                                |
 | `src/app/open-account/page.tsx`           | Manual account-request process                                                                     |

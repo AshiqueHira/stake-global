@@ -46,7 +46,7 @@ export default function ContactPage() {
           <div className="contact-type">
             <h3>Markets & platforms</h3>
             <p>
-              Ask about MetaTrader, MT5, market coverage, or the details
+              Ask about MetaFix, market coverage, or the details
               relevant to your inquiry.
             </p>
           </div>

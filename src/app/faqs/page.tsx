@@ -26,7 +26,7 @@ export default function Page() {
       <section className="wrap section content-divider">
         <div className="page-faq">
           <FAQItem question="Which trading platforms are available?">
-            MetaTrader and MetaFix are available through Stake Global. Contact
+            MetaFix is available through Stake Global. Contact
             our team for information about access and your account requirements.
           </FAQItem>
           <FAQItem question="How do I open an account?">

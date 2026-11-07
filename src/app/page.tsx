@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata(
   "Stake Global | Trade Beyond the Limits.",
-  "Explore Forex, Metals, and Indices with Stake Global. Discover available MetaTrader and MT5 platforms and learn how to connect with our team.",
+  "Explore Forex, Metals, and Indices with Stake Global. Discover the MetaFix platform and learn how to connect with our team.",
   "/",
 );
 
@@ -151,18 +151,19 @@ export default function Page() {
               Fresh perspective.
             </h2>
             <p className="intro">
-              Explore MetaTrader and MetaFix, available through Stake Global.
+              Explore MetaFix Trader, available through Stake Global.
             </p>
             <div className="platform-list">
               <div className="platform-item">
-                <strong>
+                <strong className="platform-brand">
                   <img
-                    className="platform-logo"
-                    src={assetPath("/assets/metafix-logo.png")}
-                    width="1263"
-                    height="343"
-                    alt="MetaFix"
+                    className="platform-icon"
+                    src={assetPath("/assets/metafix-icon.png")}
+                    width="277"
+                    height="286"
+                    alt=""
                   />
+                  MetaFix Trader
                 </strong>
                 <span>Available</span>
               </div>
@@ -272,7 +273,7 @@ export default function Page() {
         </div>
         <div>
           <FAQItem question="Which trading platforms are available?">
-            MetaTrader and MetaFix are available through Stake Global. Contact
+            MetaFix is available through Stake Global. Contact
             our team for information about access and your account requirements.
           </FAQItem>
           <FAQItem question="How do I open an account?">
