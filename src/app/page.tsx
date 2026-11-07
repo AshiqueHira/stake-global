@@ -1,7 +1,7 @@
 import { assetPath } from "@/lib/paths";
 import { AccountSteps } from "@/components/account-steps";
 import Link from "next/link";
-import { ButtonLink, TextLink, FAQItem } from "@/components/ui";
+import { ArrowIcon, ButtonLink, TextLink, FAQItem } from "@/components/ui";
 import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata(
@@ -41,10 +41,10 @@ export default function Page() {
           </p>
           <div className="actions">
             <ButtonLink href="/open-account/" className="">
-              Open an Account
+              Open Live Account
             </ButtonLink>
             <ButtonLink href="/contact/" className="secondary">
-              Contact Our Team
+              Login
             </ButtonLink>
           </div>
           <p className="micro">
@@ -56,7 +56,7 @@ export default function Page() {
           <Link href="#markets">
             Explore Stake Global{" "}
             <span className="down" aria-hidden="true">
-              ↓
+              <ArrowIcon direction="down" />
             </span>
           </Link>
         </div>
@@ -91,7 +91,7 @@ export default function Page() {
             economies.
           </p>
           <span className="circle-arrow" aria-hidden="true">
-            ↗
+            <ArrowIcon />
           </span>
         </Link>
         <Link className="market-row" href="/markets/#metals">
@@ -102,7 +102,7 @@ export default function Page() {
             global sentiment.
           </p>
           <span className="circle-arrow" aria-hidden="true">
-            ↗
+            <ArrowIcon />
           </span>
         </Link>
         <Link className="market-row" href="/markets/#indices">
@@ -113,7 +113,7 @@ export default function Page() {
             indices.
           </p>
           <span className="circle-arrow" aria-hidden="true">
-            ↗
+            <ArrowIcon />
           </span>
         </Link>
         <div className="section-bottom">

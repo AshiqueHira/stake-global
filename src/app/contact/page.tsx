@@ -1,5 +1,6 @@
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import Link from "next/link";
+import { Arrow } from "@/components/ui";
 
 import { pageMetadata } from "@/lib/site";
 import { Suspense } from "react";
@@ -40,7 +41,7 @@ export default function ContactPage() {
               Find out how our team guides you through the manual
               account-opening process.
             </p>
-            <Link href="/open-account/">Explore the account process ↗</Link>
+            <Link href="/open-account/">Explore the account process <Arrow /></Link>
           </div>
           <div className="contact-type">
             <h3>Markets & platforms</h3>

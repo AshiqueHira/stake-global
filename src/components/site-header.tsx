@@ -86,7 +86,7 @@ export function SiteHeader() {
           </nav>
           <div className="header-account" onClick={() => setOpen(false)}>
             <ButtonLink className="header-cta" href="/open-account/">
-              Open an Account
+              Open Live Account
             </ButtonLink>
           </div>
           <button

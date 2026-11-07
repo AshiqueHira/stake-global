@@ -12,7 +12,7 @@ export function SiteFooter() {
           <strong>Explore</strong>
           <Link href="/markets/">Markets</Link>
           <Link href="/platforms/">Platforms</Link>
-          <Link href="/open-account/">Open an Account</Link>
+          <Link href="/open-account/">Open Live Account</Link>
         </div>
         <div className="footer-col">
           <strong>Company</strong>

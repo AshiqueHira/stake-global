@@ -1,4 +1,5 @@
 "use client";
+import { ArrowIcon } from "@/components/ui";
 const inquiryTypes = [
   "general",
   "account",
@@ -89,7 +90,7 @@ export function InquiryForm({ initialType }: { initialType?: string }) {
       <button className="btn" type="submit" disabled>
         Send Inquiry{" "}
         <span className="arrow" aria-hidden="true">
-          ↗
+          <ArrowIcon />
         </span>
       </button>
       <p className="form-caption">

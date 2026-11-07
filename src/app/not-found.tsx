@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowIcon } from "@/components/ui";
 export default function NotFound() {
   return (
     <section className="wrap section">
@@ -12,7 +13,7 @@ export default function NotFound() {
         <Link className="btn " href="/">
           Return to Home
           <span className="arrow" aria-hidden="true">
-            ↗
+            <ArrowIcon />
           </span>
         </Link>
       </div>
