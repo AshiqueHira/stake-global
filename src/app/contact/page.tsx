@@ -58,9 +58,8 @@ export default function ContactPage() {
             </p>
           </div>
           <div className="notice">
-            <strong>Contact channels coming soon.</strong>Verified contact
-            details and online inquiry delivery are not yet available in this
-            website review.
+            <strong>Send us an inquiry.</strong>Use the form to reach our
+            team. We reply by email to the address you provide.
           </div>
         </div>
         <Suspense fallback={<InquiryForm initialType="general" />}>

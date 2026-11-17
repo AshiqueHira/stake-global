@@ -1,4 +1,5 @@
 "use client";
+import { useState, type FormEvent } from "react";
 import { ArrowIcon } from "@/components/ui";
 const inquiryTypes = [
   "general",
@@ -7,26 +8,54 @@ const inquiryTypes = [
   "investor",
   "partnership",
 ];
+const endpoint = `${(process.env.NEXT_PUBLIC_BASE_PATH || "").replace(/\/$/, "")}/api/inquiry/`;
+type Status =
+  | { state: "idle" }
+  | { state: "sending" }
+  | { state: "sent" }
+  | { state: "error"; message: string };
+
 export function InquiryForm({ initialType }: { initialType?: string }) {
   const selectedType = inquiryTypes.includes(initialType ?? "")
     ? initialType
     : "general";
+  const [status, setStatus] = useState<Status>({ state: "idle" });
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    setStatus({ state: "sending" });
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(
+          result.error || "Your inquiry could not be sent. Please try again.",
+        );
+      }
+      form.reset();
+      setStatus({ state: "sent" });
+    } catch (error) {
+      setStatus({
+        state: "error",
+        message:
+          error instanceof Error && error.message !== "Failed to fetch"
+            ? error.message
+            : "Your inquiry could not be sent. Please try again.",
+      });
+    }
+  }
+
   return (
-    <form
-      onSubmit={(event) => event.preventDefault()}
-      id="inquiry-form"
-      aria-describedby="form-availability"
-    >
+    <form onSubmit={handleSubmit} id="inquiry-form">
       <h2>Your inquiry</h2>
       <p className="form-note">
-        Select an inquiry type to explore the contact experience.
+        Tell us how we can help and our team will reply by email.
       </p>
-      <div className="notice" id="form-availability">
-        <strong>Submissions are currently unavailable.</strong>This preview form
-        does not send or save your information. Please do not enter sensitive
-        information. Inquiry delivery will be enabled once contact routing and
-        the privacy notice are confirmed.
-      </div>
       <div className="field-grid">
         <label htmlFor="full-name">
           Full name <span aria-hidden="true">*</span>
@@ -87,12 +116,41 @@ export function InquiryForm({ initialType }: { initialType?: string }) {
           placeholder="How can our team help?"
         ></textarea>
       </label>
-      <button className="btn" type="submit" disabled>
-        Send Inquiry{" "}
+      <div className="sr-only" aria-hidden="true">
+        <label htmlFor="website">
+          Leave this field empty
+          <input
+            id="website"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </label>
+      </div>
+      <button
+        className="btn"
+        type="submit"
+        disabled={status.state === "sending"}
+      >
+        {status.state === "sending" ? "Sending…" : "Send Inquiry"}{" "}
         <span className="arrow" aria-hidden="true">
           <ArrowIcon />
         </span>
       </button>
+      <div role="status" aria-live="polite">
+        {status.state === "sent" && (
+          <div className="notice">
+            <strong>Thank you, your inquiry has been sent.</strong>Our team
+            will get back to you by email.
+          </div>
+        )}
+        {status.state === "error" && (
+          <div className="notice">
+            <strong>Something went wrong.</strong>
+            {status.message}
+          </div>
+        )}
+      </div>
       <p className="form-caption">
         Required fields are marked *. No account is created by completing this
         form.

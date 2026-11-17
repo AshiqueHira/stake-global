@@ -76,8 +76,10 @@ const compiled = swc.transformSync(formSource, {
   module: { type: "commonjs" },
 });
 const module = { exports: {} };
+const formRequire = (id) =>
+  id === "@/components/ui" ? { ArrowIcon: () => null } : require(id);
 new Function("require", "module", "exports", compiled.code)(
-  require,
+  formRequire,
   module,
   module.exports,
 );
@@ -97,28 +99,23 @@ for (const type of [
     new RegExp(`<option value="${type}" selected="">`),
     `${type}: selected inquiry`,
   );
-  assert.match(
+  assert.doesNotMatch(
     html,
     /<button[^>]*disabled/,
-    "Submission disabled until routing exists",
+    "Submission enabled",
   );
-  assert.match(
-    html,
-    /does not send or save your information/,
-    "Availability notice present",
-  );
+  assert.match(html, /name="website"/, "Honeypot field present");
 }
 const fallback = renderToStaticMarkup(
   createElement(InquiryForm, { initialType: "<unexpected>" }),
 );
 assert.match(fallback, /<option value="general" selected="">/);
-let prevented = false;
-InquiryForm({ initialType: "account" }).props.onSubmit({
-  preventDefault() {
-    prevented = true;
-  },
-});
-assert.equal(prevented, true, "Submission guard prevents default");
+const routeSource = fs.readFileSync(
+  path.join(root, "src/app/api/inquiry/route.ts"),
+  "utf8",
+);
+assert.match(routeSource, /escapeHtml/, "Inquiry email escapes user input");
+assert.match(routeSource, /replyTo: email/, "Replies go to the sender");
 const home = fs.readFileSync(
   path.join(root, ".next/server/app/index.html"),
   "utf8",
@@ -150,5 +147,5 @@ for (let i = 0; i < artwork.length; i++) {
   );
 }
 console.log(
-  "PASS: metadata, breadcrumbs, updated platform naming, unique responsive artwork, original hero, 8 prerendered documents, required artwork, inquiry selections, invalid-query fallback, disabled submission, and submit guard.",
+  "PASS: metadata, breadcrumbs, updated platform naming, unique responsive artwork, original hero, 8 prerendered documents, required artwork, inquiry selections, invalid-query fallback, enabled submission with honeypot, and Resend inquiry route.",
 );
