@@ -81,16 +81,32 @@ export function InquiryForm({ initialType }: { initialType?: string }) {
           />
         </label>
       </div>
-      <label htmlFor="company">
-        Company name <span className="muted">(optional)</span>
-        <input
-          id="company"
-          name="company"
-          autoComplete="organization"
-          maxLength={200}
-          placeholder="Your company"
-        />
-      </label>
+      <div className="field-grid">
+        <label htmlFor="phone">
+          Contact number <span className="muted">(optional)</span>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            maxLength={30}
+            pattern="\+?[0-9\s\(\)\.\-]{6,30}"
+            title="Digits, spaces and + ( ) - only"
+            placeholder="+44 20 1234 5678"
+          />
+        </label>
+        <label htmlFor="company">
+          Company name <span className="muted">(optional)</span>
+          <input
+            id="company"
+            name="company"
+            autoComplete="organization"
+            maxLength={200}
+            placeholder="Your company"
+          />
+        </label>
+      </div>
       <label htmlFor="inquiry-type">
         Inquiry type <span aria-hidden="true">*</span>
         <select

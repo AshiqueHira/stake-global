@@ -8,8 +8,9 @@ const inquiryLabels: Record<string, string> = {
   partnership: "Partnership opportunity",
 };
 
-const limits = { name: 150, email: 254, company: 200, message: 5000 };
+const limits = { name: 150, email: 254, phone: 30, company: 200, message: 5000 };
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phonePattern = /^\+?[0-9\s().-]{6,30}$/;
 
 function field(data: Record<string, unknown>, key: string) {
   const value = data[key];
@@ -51,6 +52,7 @@ export async function POST(request: Request) {
 
   const name = field(data, "name");
   const email = field(data, "email");
+  const phone = field(data, "phone");
   const company = field(data, "company");
   const inquiry = field(data, "inquiry");
   const message = field(data, "message");
@@ -61,9 +63,13 @@ export async function POST(request: Request) {
   if (!emailPattern.test(email)) {
     return fail("Please enter a valid email address.", 400);
   }
+  if (phone && !phonePattern.test(phone)) {
+    return fail("Please enter a valid contact number.", 400);
+  }
   if (
     name.length > limits.name ||
     email.length > limits.email ||
+    phone.length > limits.phone ||
     company.length > limits.company ||
     message.length > limits.message
   ) {
@@ -74,6 +80,7 @@ export async function POST(request: Request) {
   const rows: [string, string][] = [
     ["Name", name],
     ["Email", email],
+    ["Contact number", phone || "—"],
     ["Company", company || "—"],
     ["Inquiry type", label],
   ];
